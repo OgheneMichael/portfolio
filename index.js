@@ -106,19 +106,19 @@ TweenLite.to(".projects .section-title", {
 		scrub: 1,
 		start: "top center",
 		end: "+=100",
-		// toggleActions: "restart pause reverse pause",
+		toggleActions: "restart pause reverse pause",
 	},
 	x: 0,
 });
 
-gsap.utils.toArray(".projects .section-title svg").forEach((text) => {
+gsap.utils.toArray(".section-title svg").forEach((text) => {
 	gsap
 		.timeline({
 			defaults: { ease: "none" },
 			scrollTrigger: {
 				// scroller: text.closest(".main"),
 				horizontal: true,
-				trigger: text.closest(".projects"),
+				trigger: text.closest(".panel"),
 				scrub: 1,
 				// markers: true,
 				start: "top center",

@@ -32,11 +32,11 @@ body {
 html {
 	/* width: 600%; */
 	/* height: 100%; */
-	background: linear-gradient(
+	/* background: linear-gradient(
 		90deg,
 		#efefef 0.1rem,
 		var(--main-bg-color) 0.1em
-	);
+	); */
 	background-size: 10%;
 	background-color: var(--main-bg-color);
 	/* min-height: 100vh; */
@@ -92,7 +92,7 @@ section {
 }
 
 .panel {
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 	/* font-weight: 600; */
 	/* font-size: 1.5em; */
@@ -106,7 +106,15 @@ section {
 	/* border: 1px solid orangered; */
 }
 
-.panel-lg {
+.panel--md {
+	width: 50% !important;
+}
+
+.panel--md .section-inner {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.panel--lg {
 	width: 160% !important;
 }
 
@@ -166,20 +174,23 @@ section {
 	right: 0;
 	backface-visibility: hidden;
 	pointer-events: none;
-	background-color: #21ba0d;
+	background-color: var(--primary-color-light);
 	z-index: -1;
 }
 
 .section-inner {
-	display: grid;
-	/* align-items: center; */
-	grid-column: full-start / full-end;
+	/* grid-column: full-start / full-end; */
 	display: grid;
 	grid-template: repeat(7, 5vw) / repeat(8, 1fr);
 	grid-gap: 1.5rem;
 	padding: 1.5rem;
 
 	margin: auto 0;
+}
+
+.section-title svg {
+	height: 100%;
+	width: 100%;
 }
 
 .projects .section-title {
@@ -575,3 +586,51 @@ section {
 	background-image: url(https://www.apple.com/v/ipad-pro/s/images/overview/retina_screen_1__csuokryyjb42_large.jpg);
 	z-index: 100;
 } */
+
+.resume .section-title {
+	grid-row: 1 / 8;
+	pointer-events: none;
+}
+
+.resume__listing {
+	grid-column: 2 / 5;
+	grid-row: 1 / 8;
+	display: grid;
+}
+
+.resume-heading {
+	color: var(--primary-color);
+	font-size: 32px;
+	font-weight: 600;
+	letter-spacing: 0;
+	line-height: 1;
+	align-self: end;
+}
+
+.resume__item {
+	position: relative;
+	font-weight: 300;
+	padding: 20px 0;
+	min-height: 10vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.resume__item:first-of-type {
+	padding-top: 0px;
+}
+
+.resume__item:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	height: 1px;
+	width: 100%;
+	background-color: var(--primary-color-light);
+}
+
+.resume__item-company {
+	font-size: 20px;
+	font-weight: 500;
+}
