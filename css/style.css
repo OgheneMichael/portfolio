@@ -2,7 +2,9 @@
 	--main-bg-color: #161617;
 	--primary-color: #189a46;
 	--primary-color-light: #21ba0d;
-	--text-color: #ffffff;
+	--color-white: #ffffff;
+	--unit-iPad: 60vmin;
+	--unit-iPhone: calc(60vmin / 2.525);
 }
 
 *,
@@ -16,7 +18,7 @@
 
 html,
 body {
-	overflow: hidden;
+	/* overflow: hidden; */
 	position: relative;
 	height: 100%;
 }
@@ -24,7 +26,7 @@ body {
 body {
 	font-family: "Poppins", sans-serif;
 	font-weight: 400;
-	color: var(--text-color);
+	color: var(--color-white);
 }
 
 html {
@@ -50,9 +52,19 @@ img {
 	object-fit: cover;
 }
 
+ul {
+	list-style: none;
+}
+
+.text-right {
+	text-align: right;
+}
+
 .main {
 	height: 100%;
 	width: 100%;
+
+	/* overflow: auto; */
 	/* padding: 0 10px; */
 }
 
@@ -62,21 +74,40 @@ img {
 	display: flex;
 }
 
+.row {
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	/* align-items: center; */
+}
+
+@media only screen and (max-width: 600px) {
+	.row {
+		/* display: grid; */
+	}
+}
+
 section {
 	display: grid;
 }
 
 .panel {
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	/* font-weight: 600; */
 	/* font-size: 1.5em; */
 	position: relative;
 	box-sizing: border-box;
 	padding: 10px;
 	will-change: transform;
+	flex: 0 0 auto;
+	flex-shrink: 0;
 	/* debugger */
 	/* border: 1px solid orangered; */
+}
+
+.panel-lg {
+	width: 160% !important;
 }
 
 .hero {
@@ -154,16 +185,17 @@ section {
 .projects .section-title {
 	/* width: 60rem; */
 	grid-row: 3 / 6;
-	grid-column: 1 / span 6;
+	grid-column: 1 / span 4;
 	align-self: center;
+	pointer-events: none;
 }
 
 .projects .section-description {
 	font-size: 20px;
-	/* width: 240px; */
+	max-width: 240px;
 	font-weight: 300;
 	grid-row: 2 / 2;
-	grid-column: 2 / 4;
+	grid-column: 1 / span 2;
 }
 
 .projects-intro {
@@ -186,26 +218,69 @@ section {
 } */
 
 .projects__item {
-	border: 1px solid orchid;
 	/* position: absolute; */
 	/* width: 50%; */
-	display: flex;
+	/* display: flex; */
+	display: grid;
+	grid-template-columns: 44% 1fr;
+	column-gap: 1%;
+	align-items: end;
+}
+
+.projects__item-name {
+	color: var(--primary-color);
+	font-size: 32px;
+	font-weight: 600;
+	letter-spacing: 0;
+	line-height: 1;
+}
+
+.projects__item-name span {
+	display: block;
+}
+
+.projects__item .projects__item-details::before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	height: 5px;
+
+	background: var(--primary-color-light);
 }
 
 .projects__item--1 {
 	grid-row: 1 / 4;
-	grid-column: 4 / 8;
-	background-color: orchid;
+	grid-column: 4 / 7;
+	/* background-color: orchid; */
+}
+
+.projects__item--1 .projects__item-details::before {
+	width: 45%;
+	left: 0;
+	transform: translateX(-25%);
 }
 
 .projects__item-screen {
-	height: 250px;
-	width: 400px;
+	position: relative;
+	/* height: 250px; */
+	/* width: 400px; */
+	/* padding: 0;
+	margin: 0; */
+	display: flex;
+	/* align-items: flex-end; */
+	justify-content: center;
+	overflow: hidden;
+	font-size: 12px;
+	padding-bottom: 5px;
+	/* font-size: 2rem; */
 }
 
 .projects__item-details {
+	position: relative;
 	display: grid;
 	align-items: center;
+	justify-items: start;
+	row-gap: 5px;
 }
 
 .projects__item-description {
@@ -213,16 +288,290 @@ section {
 	font-weight: 300;
 }
 
+.card {
+	background: var(--primary-color);
+	border-radius: 5px;
+	padding: 10px 10px 5px;
+	min-width: 60%;
+}
+
+.card__title {
+	position: relative;
+	color: #d3d3d3;
+	font-size: 14px;
+	font-weight: 300;
+	/* line-height: 1; */
+	margin-bottom: 5px;
+}
+
+.card__title::before {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	height: 0.25px;
+	left: 0;
+	width: 95%;
+	background: #d3d3d3;
+}
+
+.card__content--list {
+	display: flex;
+	align-items: flex-end;
+	margin: 0 -5px;
+}
+
+.tech-icon {
+	width: 35px;
+	height: 30px;
+	margin: 0 5px;
+}
+
 .projects__item--2 {
+	grid-template-columns: 50% 1fr;
 	grid-row: 5 / span 5;
-	grid-column: 4 / 8;
-	background-color: rebeccapurple;
-	/* flex-direction: row-reverse; */
+	grid-column: 4 / 7;
+	direction: rtl;
+}
+
+.projects__item--2 .iphone {
+	left: 30px;
+	right: auto;
+}
+
+.projects__item--2 .projects__item-details {
+	justify-items: end;
+	direction: ltr;
+}
+
+.projects__item--2 .projects__item-details::before {
+	right: 0;
+	transform: translateX(24%);
+	background: var(--primary-color-light);
+	direction: rtl;
+	width: 60%;
 }
 
 .projects__item--3 {
-	grid-row: 3 / 6;
-	grid-column: 7 / span 8;
-	background-color: rosybrown;
-	/* flex-direction: row-reverse; */
+	margin-left: 2rem;
+	grid-row: 3 / 8;
+	grid-column: 7 / 9;
+	grid-template-columns: auto;
+	align-items: start;
 }
+
+.projects__item--3 .projects__item-screen {
+	height: 100%;
+	padding: 0;
+}
+
+.projects__item--3 .projects__item-screen,
+.projects__item--3 .projects__item-details {
+	max-width: 400px;
+}
+
+.projects__item--3 .projects__item-details {
+	justify-self: end;
+	padding-left: 3rem;
+}
+
+.projects__item--3 .projects__item-details::before {
+	width: 5px;
+	height: 110%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	transform: translate(25px, -5%);
+}
+
+.macbook {
+	/* padding: 4% 6%; */
+	margin: 0 auto;
+	max-width: 800px;
+	width: 100%;
+}
+
+.screen {
+	background: #000;
+	border-radius: 3% 3% 0.5% 0.5% / 5%;
+	margin: 0 auto;
+	/* for aspect ratio */
+	position: relative;
+	width: 80%;
+}
+
+.screen:before {
+	border: 2px solid #cacacc;
+	border-radius: 3% 3% 0.5% 0.5% / 5%;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset,
+		0 0 1px 2px rgba(255, 255, 255, 0.3) inset;
+	content: "";
+	display: block;
+	/* for aspect ratio ~67:100 */
+	padding-top: 67%;
+}
+
+.screen:after {
+	content: "";
+	border-top: 2px solid rgba(255, 255, 255, 0.15);
+	position: absolute;
+	bottom: 0.75%;
+	left: 0.5%;
+	padding-top: 1%;
+	width: 99%;
+}
+
+.viewport {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	margin: 4.3% 3.2%;
+	background: #333;
+}
+
+.base {
+	/* for aspect ratio */
+	position: relative;
+	width: 100%;
+}
+
+.base:before {
+	content: "";
+	display: block;
+	/* for aspect ratio ~33:1000*/
+	padding-top: 3.3%;
+	/* stylin */
+	background: linear-gradient(
+		#eaeced,
+		#edeef0 55%,
+		#fff 55%,
+		#8a8b8f 56%,
+		#999ba0 61%,
+		#4b4b4f 84%,
+		#262627 89%,
+		rgba(0, 0, 0, 0.01) 98%
+	);
+	border-radius: 0 0 10% 10%/ 0 0 50% 50%;
+}
+
+.base::after {
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0.5),
+		rgba(255, 255, 255, 0.8) 0.5%,
+		rgba(0, 0, 0, 0.4) 3.3%,
+		transparent 15%,
+		rgba(255, 255, 255, 0.8) 50%,
+		transparent 85%,
+		rgba(0, 0, 0, 0.4) 96.7%,
+		rgba(255, 255, 255, 0.8) 99.5%,
+		rgba(0, 0, 0, 0.5) 100%
+	);
+	content: "";
+	height: 53%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.notch {
+	background: #ddd;
+	border-radius: 0 0 7% 7% / 0 0 95% 95%;
+	box-shadow: -5px -1px 3px rgba(0, 0, 0, 0.2) inset,
+		5px -1px 3px rgba(0, 0, 0, 0.2) inset;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -3.5%;
+	z-index: 2;
+	/* for aspect ratio */
+	position: relative;
+	width: 14%;
+}
+
+.notch:before {
+	content: "";
+	display: block;
+	/* for aspect ratio ~1:10 */
+	padding-top: 10%;
+}
+
+/* Screenshot Hover Scroll Additions
+-------------------------------------------------------------- */
+
+.macbook .viewport {
+	transition: background-position 3s ease;
+	background-position: 0 0;
+	background-size: 100% auto;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.viewport:hover {
+	background-position: 0 100%;
+}
+
+.macbook .viewport:after {
+	background: radial-gradient(
+		circle at right bottom,
+		transparent 75%,
+		rgba(255, 255, 255, 0.05) 75%,
+		transparent
+	);
+	bottom: 0;
+	content: "";
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.iphone,
+.ipad {
+	display: block;
+	/* background-color: #000; */
+	/* background-size: auto 200%, cover; */
+	background-repeat: no-repeat, no-repeat;
+	border: solid #111;
+	/* position: relative; */
+	/* transition: all 0.1s linear, line-height 0s linear;
+	background-position: 50% 100%, center;
+	transform-origin: bottom center; */
+	background-position: top center;
+	transform-origin: bottom center;
+	background-size: cover;
+
+	transition: background-position 3s ease;
+	background-position: 0 0;
+	background-size: 100% auto;
+}
+
+.iphone:hover,
+.ipad:hover {
+	/* text-shadow: 0 0 0em transparent; */
+	/* transition: all 0.15s linear, line-height 5s linear; */
+	background-position: 0 100%;
+}
+
+.iphone {
+	position: absolute;
+	right: 30px;
+	bottom: 17px;
+	width: 4.125em;
+	height: 7.75em;
+	/* width: 4.125em;
+	height: 8.75em; */
+	border-radius: 0.5em;
+	/* background-image: url("../images/botoffice-mobile.jpg"); */
+	z-index: 200;
+}
+/* 
+.ipad {
+	margin-left: 2em;
+	width: 8.75em;
+	height: 12.75em;
+	border-radius: 0.5em;
+	border-width: 0.563em;
+	background-image: url(https://www.apple.com/v/ipad-pro/s/images/overview/retina_screen_1__csuokryyjb42_large.jpg);
+	z-index: 100;
+} */
