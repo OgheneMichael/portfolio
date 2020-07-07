@@ -27,18 +27,15 @@ body {
 	font-family: "Poppins", sans-serif;
 	font-weight: 400;
 	color: var(--color-white);
+	/* cursor: none; */
 }
 
 html {
 	/* width: 600%; */
 	/* height: 100%; */
-	/* background: linear-gradient(
-		90deg,
-		#efefef 0.1rem,
-		var(--main-bg-color) 0.1em
-	); */
+	background: linear-gradient(90deg, #efefef 0px, var(--main-bg-color) 0.02em);
 	background-size: 10%;
-	background-color: var(--main-bg-color);
+	/* background-color: var(--main-bg-color); */
 	/* min-height: 100vh; */
 	-ms-touch-action: pan-y;
 	touch-action: pan-y;
@@ -83,7 +80,7 @@ ul {
 
 @media only screen and (max-width: 600px) {
 	.row {
-		/* display: grid; */
+		display: grid;
 	}
 }
 
@@ -188,11 +185,6 @@ section {
 	margin: auto 0;
 }
 
-.section-title svg {
-	height: 100%;
-	width: 100%;
-}
-
 .projects .section-title {
 	/* width: 60rem; */
 	grid-row: 3 / 6;
@@ -200,6 +192,12 @@ section {
 	align-self: center;
 	pointer-events: none;
 }
+
+/* .projects .section-title svg {
+	position: relative;
+	display: block;
+	transform: translateX(-100px);
+} */
 
 .projects .section-description {
 	font-size: 20px;
@@ -308,7 +306,7 @@ section {
 
 .card__title {
 	position: relative;
-	color: #d3d3d3;
+	color: #f9f9f9;
 	font-size: 14px;
 	font-weight: 300;
 	/* line-height: 1; */
@@ -588,17 +586,22 @@ section {
 } */
 
 .resume .section-title {
-	grid-row: 1 / 8;
+	grid-row: 1 / span 7;
 	pointer-events: none;
 }
 
+.resume .section-title svg {
+	height: 100%;
+	width: 100%;
+}
+
 .resume__listing {
-	grid-column: 2 / 5;
-	grid-row: 1 / 8;
+	grid-column: 2 / span 3;
+	grid-row: 1 / span 6;
 	display: grid;
 }
 
-.resume-heading {
+.heading {
 	color: var(--primary-color);
 	font-size: 32px;
 	font-weight: 600;
@@ -633,4 +636,92 @@ section {
 .resume__item-company {
 	font-size: 20px;
 	font-weight: 500;
+}
+
+.contact .section-title {
+	/* grid-row: 1 / span 3; */
+	grid-column: 1 / span 3;
+	align-self: start;
+}
+
+.contact .section-title svg {
+	width: 80%;
+}
+
+.contact .heading {
+	grid-row: 6 / 6;
+	grid-column: 1 / span 3;
+	justify-self: start;
+}
+
+.contact__listing {
+	grid-row: 7 / span 7;
+	grid-column: 1 / span 3;
+}
+
+.contact__item {
+	position: relative;
+	color: var(--color-white);
+	transition: 0.3s ease;
+	display: inline;
+}
+
+.contact__item-link {
+	color: currentColor;
+	text-decoration: none;
+	transition: 0.3s ease;
+	position: relative;
+	display: block;
+}
+
+.contact__item:hover .contact__item-link {
+	color: var(--primary-color);
+	padding-left: 2%;
+}
+
+.cursor {
+	pointer-events: none;
+}
+
+.cursor--main {
+	width: 15px;
+	height: 15px;
+	border: 1px solid var(--color-white);
+	background-color: var(--color-white);
+	position: absolute;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	pointer-events: none;
+	/* transition-duration: 200ms; */
+	/* transition-timing-function: ease-out; */
+}
+
+.cursor--border {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid var(--color-white);
+	transform: translate(-50%, -50%);
+	/* left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0; */
+	transition-duration: 200ms;
+	transition-timing-function: ease-out;
+	pointer-events: none;
+}
+
+@keyframes cursorAnim {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0.7);
+	}
+}
+
+.expand {
+	animation: cursorAnim3 0.5s forwards;
+	border: 1px solid red;
 }
