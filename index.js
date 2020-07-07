@@ -1,15 +1,27 @@
-import { gsap, TweenMax, TweenLite, Power1, Power4, Expo } from "gsap";
-
+import { gsap, TweenLite } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const hero = document.querySelector(".hero");
+const ogCursor = document.querySelector(".cursor");
 const portrait = document.querySelector(".intro-portrait");
-let panes = gsap.utils.toArray(".pane");
-var fixer = 0.0004; //experiment with the value
+const svgs = gsap.utils.toArray(".section-title svg");
+const projects = gsap.utils.toArray(".projects__item");
+const resumeItems = gsap.utils.toArray(".resume__item");
+const panes = gsap.utils.toArray(".pane");
+const fixer = 0.0004;
+ScrollTrigger.defaults({
+	toggleActions: "restart pause resume none",
+	horizontal: true,
+	start: "top center",
+	end: "+=500",
+	scrub: 1,
+});
 
-portrait.addEventListener("mousemove", handleParallax);
-portrait.addEventListener("mouseleave", handleParallax);
+function animatePortrait() {
+	portrait.addEventListener("mousemove", handleParallax);
+	portrait.addEventListener("mouseleave", handleParallax);
+}
 
 function handleParallax(event) {
 	let pageX = event.clientX - hero.offsetWidth * 0.5; //get the mouseX - negative on left, positive on right
@@ -23,7 +35,7 @@ function handleParallax(event) {
 			xValue = (item.offsetLeft + pageX * speed) * fixer; //calculate the new X based on mouse position * speed
 			yValue = (item.offsetTop + pageY * speed) * fixer; //same here, calculate the new Y.
 		}
-		TweenLite.to(item, 0.5, {
+		TweenLite.to(item, 1.5, {
 			x: xValue,
 			y: yValue,
 		});
@@ -94,36 +106,94 @@ function SmoothScroll(target, speed, smooth) {
 	})();
 }
 
-new SmoothScroll(document, 120, 12);
+function animateSVG() {
+	TweenLite.set(".projects .section-title svg", { x: "-100px" });
+	svgs.forEach((svg) => {
+		gsap
+			.timeline({
+				// defaults: { ease: "none" },
+				scrollTrigger: {
+					trigger: svg.closest(".section-inner"),
+				},
+			})
+			.to(svg, { x: 0, fill: "#21BA0D" });
+	});
+}
 
-TweenLite.set(".projects .section-title", { x: "-100px" });
-
-TweenLite.to(".projects .section-title", {
-	scrollTrigger: {
-		trigger: ".projects",
-		// markers: true,
-		horizontal: true,
-		scrub: 1,
-		start: "top center",
-		end: "+=100",
-		toggleActions: "restart pause reverse pause",
-	},
-	x: 0,
-});
-
-gsap.utils.toArray(".section-title svg").forEach((text) => {
+function animateProjects() {
 	gsap
 		.timeline({
-			defaults: { ease: "none" },
 			scrollTrigger: {
-				// scroller: text.closest(".main"),
-				horizontal: true,
-				trigger: text.closest(".panel"),
-				scrub: 1,
-				// markers: true,
-				start: "top center",
-				end: "+=100",
+				trigger: ".projects__item--1",
+				start: "top 85%",
 			},
 		})
-		.to(text, { x: 0, fill: "#21BA0D" });
-});
+		.fromTo(
+			".projects__item--1",
+			{ y: "-50px", opacity: 0 },
+			{ y: 0, opacity: 1 }
+		);
+
+	gsap
+		.timeline({
+			scrollTrigger: {
+				trigger: ".projects__item--2",
+				start: "top 50%",
+			},
+		})
+		.fromTo(
+			".projects__item--2",
+			{ y: "100px", opacity: 0 },
+			{ y: 0, opacity: 1 }
+		);
+
+	gsap
+		.timeline({
+			scrollTrigger: {
+				trigger: ".projects__item--2",
+				start: "bottom 85%",
+			},
+		})
+		.fromTo(
+			".projects__item--3",
+			{ scale: 0.8, opacity: 0 },
+			{ scale: 1, opacity: 1 }
+		);
+}
+
+function animateResume() {
+	TweenLite.set(resumeItems, { y: "-30px", opacity: 0 });
+
+	resumeItems.forEach((item) => {
+		gsap
+			.timeline({
+				// defaults: { ease: "none" },
+				scrollTrigger: {
+					trigger: item.closest(".section-inner"),
+					start: "-40% 60%",
+				},
+			})
+			.to(item, { y: 0, opacity: 1 });
+	});
+}
+
+function handleCursor() {
+	window.addEventListener("mousemove", function (e) {
+		ogCursor.firstElementChild.style.top = `${e.pageY}px`;
+		ogCursor.firstElementChild.style.left = `${e.pageX}px`;
+		ogCursor.lastElementChild.style.top = `${e.pageY}px`;
+		ogCursor.lastElementChild.style.left = `${e.pageX}px`;
+	});
+}
+
+function init() {
+	new SmoothScroll(document, 120, 12);
+	animateSVG();
+	animateResume();
+	animatePortrait();
+	animateProjects();
+	// handleCursor();
+	// generateCanvas();
+}
+
+init();
