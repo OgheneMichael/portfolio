@@ -47,6 +47,7 @@ img {
 	display: block;
 	margin: 0 auto;
 	object-fit: cover;
+	object-position: top center;
 }
 
 ul {
@@ -147,7 +148,7 @@ section {
 	padding-bottom: 0.5rem;
 }
 
-#hero__scroll-icon {
+.hero__scroll svg {
 	width: 3.5rem;
 	height: 3rem;
 	margin: 0 5px;
@@ -155,39 +156,39 @@ section {
 	transition: all 0.3s ease;
 }
 
-#hero__scroll-icon path {
+.hero__scroll svg path {
 	transition: 0.3s ease;
 }
 
-#hero__scroll-icon path[data-name="backward"] {
+.hero__scroll svg path[data-name="backward"] {
 	opacity: 0;
 }
 
-#hero__scroll-icon path[data-name="forward"] {
+.hero__scroll svg path[data-name="forward"] {
 	opacity: 0;
 }
 
-#hero__scroll-icon.alternate {
+.hero__scroll svg.alternate {
 	transform: translateX(0);
 }
 
-#hero__scroll-icon.alternate path {
+.hero__scroll svg.alternate path {
 	opacity: 1;
 }
 
-#hero__scroll-icon.forward {
+.hero__scroll svg.forward {
 	transform: translateX(-20%);
 }
 
-#hero__scroll-icon.forward path[data-name="forward"] {
+.hero__scroll svg.forward path[data-name="forward"] {
 	opacity: 1;
 }
 
-#hero__scroll-icon.backward {
+.hero__scroll svg.backward {
 	transform: translateX(20%);
 }
 
-#hero__scroll-icon.backward path[data-name="backward"] {
+.hero__scroll svg.backward path[data-name="backward"] {
 	opacity: 1;
 }
 
@@ -212,18 +213,20 @@ section {
 .intro-portrait-wrapper {
 	height: 100%;
 	padding-left: 10%;
+	padding-top: 10%;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	grid-row: 3 / 6;
+	grid-row: 1 / 7;
 	grid-column: 6 / 9;
 	/* perspective: 30px; */
 }
 
 .intro-portrait {
 	position: relative;
-	height: 456px;
-	width: 387px;
+	height: 100%;
+	width: 100%;
+
 	border-radius: 10px;
 	/* overflow: hidden; */
 }
