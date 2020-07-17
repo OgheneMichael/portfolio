@@ -303,6 +303,33 @@
 		}
 	}
 
+	&__download {
+		&,
+		&:link,
+		&:visited {
+			position: relative;
+			font-size: 2rem;
+			white-space: nowrap;
+			grid-row: 7 / 7;
+		}
+		&--icon {
+			position: absolute;
+			width: 2.8rem;
+			height: 3.8rem;
+			bottom: 0;
+			fill: currentColor;
+			transform: translateX(-3.7rem);
+
+			& path {
+				transition: all 0.3s;
+			}
+		}
+
+		&:hover &--icon path[data-name="animate"] {
+			transform: translateY(10%);
+		}
+	}
+
 	.section-title {
 		grid-row: 1 / span 7;
 		pointer-events: none;
@@ -335,17 +362,16 @@
 
 	&__listing {
 		grid-row: 7 / 7;
-		grid-column: 1 / span 3;
+		grid-column: 1 / 3;
 		display: grid;
-		align-items: start;
-		justify-content: start;
+		justify-items: start;
+		white-space: nowrap;
 	}
 
 	&__item {
 		position: relative;
 		color: var(--color-white);
 		transition: 0.3s ease;
-		/* display: inline; */
 
 		&:hover .contact__item-link {
 			color: var(--primary-color);
@@ -355,10 +381,7 @@
 
 	&__item-link {
 		color: currentColor;
-		text-decoration: none;
 		transition: 0.3s ease;
-		position: relative;
-		/* display: block; */
 	}
 }
 
