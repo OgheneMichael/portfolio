@@ -1,9 +1,10 @@
+import "./sass/main.scss";
 import { gsap, TweenLite, TimelineMax } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const hero = document.querySelector(".hero");
-const scrollIconContainer = document.querySelector(".hero__scroll");
+const scrollIconContainer = document.querySelector(".scroll-indicator");
 const scrollIcon = scrollIconContainer.querySelector("svg");
 const ogCursor = document.querySelector(".cursor");
 const portrait = document.querySelector(".intro-portrait");
@@ -232,7 +233,7 @@ function handleScrollIcon() {
 		scrollTrigger: {
 			trigger: scrollIconContainer,
 			scrub: -2,
-			start: "center 10%",
+			start: "top left",
 			endTrigger: ".contact__listing",
 			snap: true,
 			end: "top -128%",
@@ -243,7 +244,7 @@ function handleScrollIcon() {
 			onLeaveBack: () => handleScrollIconPath("forward"),
 		},
 
-		x: `${document.querySelector("main").offsetWidth * 4}px`,
+		x: `${document.querySelector("main").offsetWidth * 4.033}px`,
 		zIndex: 3000,
 	});
 
