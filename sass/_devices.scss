@@ -4,7 +4,7 @@
 .macbook {
 	/* padding: 4% 6%; */
 	margin: 0 auto;
-	max-width: 800px;
+	max-width: 80rem;
 	width: 100%;
 }
 
@@ -145,19 +145,23 @@
 }
 
 ////////////////////////////////////////
-// IPHONE
+// Mobile Phone
 
-.iphone,
-.ipad {
+.mobile {
 	display: block;
-	/* background-color: #000; */
-	/* background-size: auto 200%, cover; */
+	position: absolute;
+	right: 3rem;
+	bottom: 1.7rem;
+	width: 7.1rem;
+	height: 13.7rem;
+	// width: 4.125em;
+	// height: 7.75em;
+
+	border: 0.3rem solid #111;
+
+	border-radius: 0.5em;
+	z-index: 200;
 	background-repeat: no-repeat, no-repeat;
-	border: solid #111;
-	/* position: relative; */
-	/* transition: all 0.1s linear, line-height 0s linear;
-	background-position: 50% 100%, center;
-	transform-origin: bottom center; */
 	background-position: top center;
 	transform-origin: bottom center;
 	background-size: cover;
@@ -165,24 +169,13 @@
 	transition: background-position 3s ease;
 	background-position: 0 0;
 	background-size: 100% auto;
-}
 
-.iphone:hover,
-.ipad:hover {
-	/* text-shadow: 0 0 0em transparent; */
-	/* transition: all 0.15s linear, line-height 5s linear; */
-	background-position: 0 100%;
-}
+	@media only screen and (min-width: $bp-smallest) {
+		width: 5rem;
+		height: 9.3rem;
+	}
 
-.iphone {
-	position: absolute;
-	right: 30px;
-	bottom: 17px;
-	width: 4.125em;
-	height: 7.75em;
-	/* width: 4.125em;
-	height: 8.75em; */
-	border-radius: 0.5em;
-	/* background-image: url("../images/botoffice-mobile.jpg"); */
-	z-index: 200;
+	&:hover {
+		background-position: 0 100%;
+	}
 }

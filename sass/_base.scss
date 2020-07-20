@@ -86,10 +86,14 @@ body {
 	// line-height: 1.6;
 	color: var(--color-white);
 	background: linear-gradient(90deg, #efefef 0, var(--main-bg-color) 0.032rem);
-	background-size: 10%;
 	-ms-touch-action: pan-y;
 	touch-action: pan-y;
 	font-size: 1.6rem;
+	background-size: 20%;
+
+	@media only screen and (min-width: $bp-smallest) {
+		background-size: 10%;
+	}
 }
 
 a {
