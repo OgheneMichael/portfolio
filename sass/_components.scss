@@ -475,6 +475,9 @@
 
 		@media only screen and (min-width: $bp-smallest) {
 			position: relative;
+			top: 0;
+			bottom: 0;
+			transform: none;
 			grid-row: 1 / span 7;
 		}
 
@@ -526,7 +529,10 @@
 		}
 
 		&--link {
-			&:focus {
+			color: currentColor;
+			transition: 0.3s ease;
+			&:focus,
+			&:active {
 				color: var(--primary-color);
 				padding-left: 2%;
 			}
@@ -538,11 +544,6 @@
 				padding-left: 2%;
 			}
 		}
-	}
-
-	&__item-link {
-		color: currentColor;
-		transition: 0.3s ease;
 	}
 }
 

@@ -28,7 +28,6 @@ section {
 
 .panel {
 	width: 100%;
-	min-height: 100vh;
 	/* font-weight: 600; */
 	/* font-size: 1.5em; */
 	position: relative;
@@ -39,8 +38,9 @@ section {
 	flex-shrink: 0;
 	/* debugger */
 
-	&--md {
-		@media only screen and (min-width: $bp-smallest) {
+	@media only screen and (min-width: $bp-smallest) {
+		min-height: 100vh;
+		&--md {
 			width: 50% !important;
 
 			.section-inner {
