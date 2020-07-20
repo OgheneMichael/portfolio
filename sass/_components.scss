@@ -542,19 +542,23 @@
 		}
 
 		&--link {
-			color: currentColor;
-			transition: 0.3s ease;
-			&:focus,
-			&:active {
-				color: var(--primary-color);
-				padding-left: 2%;
+			&,
+			&:link,
+			&:visited {
+				color: currentColor;
+				transition: 0.3s ease;
+				&:focus,
+				&:active {
+					color: var(--primary-color);
+					padding-left: 2%;
+				}
 			}
-		}
 
-		@media not all and (hover: none) {
-			&:hover &-link {
-				color: var(--primary-color);
-				padding-left: 2%;
+			@media not all and (hover: none) {
+				&:hover {
+					color: var(--primary-color);
+					padding-left: 2%;
+				}
 			}
 		}
 	}
