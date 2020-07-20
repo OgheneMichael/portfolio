@@ -391,10 +391,14 @@
 ////////////////////////////////////////
 // RESUME
 .resume {
+	position: relative;
 	&__listing {
-		grid-column: 2 / span 3;
-		grid-row: 1 / span 6;
 		display: grid;
+		// gap: 1rem;
+		@media only screen and (min-width: $bp-smallest) {
+			grid-column: 2 / span 3;
+			grid-row: 1 / span 6;
+		}
 	}
 
 	&__item {
@@ -407,7 +411,9 @@
 		justify-content: center;
 
 		&:first-of-type {
-			padding-top: 0;
+			@media only screen and (min-width: $bp-smallest) {
+				padding-top: 0;
+			}
 		}
 
 		&:not(:last-child)::after {
@@ -431,16 +437,21 @@
 		&:visited {
 			position: relative;
 			font-size: 2rem;
-			white-space: nowrap;
-			grid-row: 7 / 7;
+
+			@media only screen and (min-width: $bp-smallest) {
+				white-space: nowrap;
+				grid-row: 7 / 7;
+			}
 		}
 		&--icon {
-			position: absolute;
 			width: 2.8rem;
 			height: 3.8rem;
-			bottom: 0;
 			fill: currentColor;
-			transform: translateX(-3.7rem);
+			@media only screen and (min-width: $bp-smallest) {
+				position: absolute;
+				bottom: 0;
+				transform: translateX(-3.7rem);
+			}
 
 			& path {
 				transition: all 0.3s;
@@ -453,8 +464,19 @@
 	}
 
 	.section-title {
-		grid-row: 1 / span 7;
 		pointer-events: none;
+		position: absolute;
+		top: -8rem;
+		bottom: -8rem;
+		left: 0;
+		right: 0;
+		transform: rotate(90deg) translateX(-30rem);
+		// opacity: 0.2;
+
+		@media only screen and (min-width: $bp-smallest) {
+			position: relative;
+			grid-row: 1 / span 7;
+		}
 
 		svg {
 			height: 100%;
@@ -472,7 +494,9 @@
 		align-self: start;
 
 		svg {
-			width: 80%;
+			@media only screen and (min-width: $bp-smallest) {
+				width: 80%;
+			}
 		}
 	}
 
@@ -494,10 +518,25 @@
 		position: relative;
 		color: var(--color-white);
 		transition: 0.3s ease;
+		margin-bottom: 1rem;
+		font-size: 2rem;
+		@media only screen and (min-width: $bp-smallest) {
+			font-size: 1.6rem;
+			margin: 0;
+		}
 
-		&:hover .contact__item-link {
-			color: var(--primary-color);
-			padding-left: 2%;
+		&--link {
+			&:focus {
+				color: var(--primary-color);
+				padding-left: 2%;
+			}
+		}
+
+		@media not all and (hover: none) {
+			&:hover &-link {
+				color: var(--primary-color);
+				padding-left: 2%;
+			}
 		}
 	}
 

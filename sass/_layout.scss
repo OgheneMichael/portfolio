@@ -38,14 +38,16 @@ section {
 	flex: 0 0 auto;
 	flex-shrink: 0;
 	/* debugger */
-}
 
-.panel--md {
-	width: 50% !important;
-}
+	&--md {
+		@media only screen and (min-width: $bp-smallest) {
+			width: 50% !important;
 
-.panel--md .section-inner {
-	grid-template-columns: repeat(3, 1fr);
+			.section-inner {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+	}
 }
 
 .panel--lg {
