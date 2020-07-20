@@ -263,11 +263,11 @@ function handleScrollIcon() {
 
 function init() {
 	new SmoothScroll(document, 120, 12);
-	animateSVG();
-	animateResume();
-	animatePortrait();
-	animateProjects();
-	handleScrollIcon();
+	// animateSVG();
+	// animateResume();
+	// animatePortrait();
+	// animateProjects();
+	// handleScrollIcon();
 	// handleCursor();
 	// generateCanvas();
 }
