@@ -327,9 +327,7 @@
 
 	.section-title {
 		pointer-events: none;
-		position: absolute;
-		left: -8rem;
-		right: -8rem;
+
 		@media only screen and (min-width: $bp-smallest) {
 			position: relative;
 			align-self: center;
@@ -338,13 +336,19 @@
 			grid-row: 3 / 6;
 			grid-column: 1 / span 4;
 		}
+		@media only screen and (max-width: $bp-smallest) {
+			position: absolute;
+			transform: scale(1.5);
+			left: 3.5rem;
+			right: 2.5rem;
+		}
 	}
 
 	.section-description {
 		font-size: 2rem;
 		font-weight: 300;
 		text-align: center;
-		margin: 19rem 0 2rem;
+		margin: 15rem 0 2rem;
 
 		@media only screen and (min-width: $bp-smallest) {
 			text-align: left;
@@ -402,6 +406,7 @@
 .resume {
 	position: relative;
 	@media only screen and (max-width: $bp-smallest) {
+		display: block;
 		// padding-top: 1rem;
 	}
 
@@ -483,10 +488,10 @@
 		pointer-events: none;
 		position: absolute;
 		top: 0;
-		bottom: 0;
+		// bottom: 0;
 		left: 0;
 		right: 0;
-		transform: rotate(90deg) translateX(-25rem);
+		transform: rotate(90deg) scale(3.8);
 
 		@media only screen and (min-width: $bp-smallest) {
 			position: relative;

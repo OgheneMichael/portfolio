@@ -16,8 +16,8 @@
 	margin-left: auto;
 	margin-right: auto;
 	display: flex;
-
 	@media only screen and (max-width: $bp-medium) {
+		overflow-x: hidden;
 		display: grid;
 	}
 }
