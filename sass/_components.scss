@@ -8,6 +8,12 @@
 	top: 1rem;
 	left: 7rem;
 	border-radius: 1rem;
+
+	@media only screen and (max-width: $bp-smallest) {
+		position: relative;
+		top: 2rem;
+		left: 3rem;
+	}
 }
 
 ////////////////////////////////////////
@@ -621,6 +627,11 @@
 	color: #ffffff;
 	&--text {
 		padding-bottom: 0.8rem;
+	}
+
+	@media only screen and (max-width: $bp-smallest) {
+		position: relative;
+		display: none;
 	}
 
 	svg {

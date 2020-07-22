@@ -64,7 +64,7 @@ function handleParallax(event) {
 
 const animateSVG = {
 	desktop() {
-		TweenLite.set(".projects .section-title svg", { x: "-100px" });
+		TweenLite.set(".projects .section-title svg", { x: "-10rem" });
 		svgs.forEach((svg) => {
 			gsap
 				.timeline({
@@ -282,6 +282,7 @@ function init() {
 			animateProjects.desktop();
 			animateSVG.desktop();
 			animatePortrait.desktop();
+			handleScrollIcon();
 		},
 		"(max-width: 56.25em)": function () {
 			animatePortrait.mobile();
@@ -291,7 +292,7 @@ function init() {
 	});
 
 	animateResume();
-	handleScrollIcon();
+
 	// handleCursor();
 }
 
