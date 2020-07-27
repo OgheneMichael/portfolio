@@ -131,13 +131,13 @@ const animateProjects = {
 			.timeline({
 				scrollTrigger: {
 					trigger: ".projects__item--2",
-					start: "top 50%",
+					start: "top 80%",
 				},
 			})
 			.fromTo(
 				".projects__item--2",
-				{ y: "100px", opacity: 0 },
-				{ y: 0, opacity: 1 }
+				{ y: "3rem", opacity: 0, overflow: "hidden" },
+				{ y: 0, opacity: 1, overflow: "visible" }
 			);
 
 		gsap
