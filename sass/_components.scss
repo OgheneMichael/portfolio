@@ -296,6 +296,19 @@
 			letter-spacing: 0;
 			line-height: 1;
 
+			&:hover {
+				a {
+					transform: translateX(0.5rem);
+				}
+			}
+
+			a {
+				display: block;
+				position: relative;
+				color: currentColor;
+				transition: 0.3s ease;
+			}
+
 			&--break {
 				@media only screen and (min-width: $bp-smallest) {
 					display: block;
