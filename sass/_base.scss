@@ -81,7 +81,10 @@ html {
 		font-size: 50%; //1rem = 8px; 8px/16px = 50%;
 	}
 	@media only screen and (min-width: 112.5em) {
-		font-size: 118.75%; //1rem = 19px; 19px/16px = 118.75%;
+		font-size: 68.75%; //1rem = 19px; 19px/16px = 118.75%;
+	}
+	@media only screen and (min-width: 125em) {
+		font-size: 100%; //1rem = 19px; 19px/16px = 118.75%;
 	}
 }
 
