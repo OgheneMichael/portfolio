@@ -37,7 +37,7 @@ section {
 	flex-shrink: 0;
 	padding: 0 1rem;
 
-	@media only screen and (min-width: $bp-smallest) {
+	@media only screen and (min-width: $bp-medium) {
 		padding: 1rem;
 		min-height: 100vh;
 		&--md {
@@ -51,7 +51,7 @@ section {
 }
 
 .panel--lg {
-	@media only screen and (min-width: $bp-smallest) {
+	@media only screen and (min-width: $bp-medium) {
 		width: 160% !important;
 	}
 }
@@ -64,7 +64,7 @@ section {
 	grid-gap: 3vmin;
 	padding: 3vmin;
 
-	@media only screen and (min-width: $bp-smallest) {
+	@media only screen and (min-width: $bp-medium) {
 		// grid-template: repeat(7, 5vw) / repeat(8, 1fr);
 		grid-template: repeat(8, 7vmin) / repeat(8, 1fr);
 	}
